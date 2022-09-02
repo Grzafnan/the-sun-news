@@ -15,7 +15,7 @@ const displayCategory = async (data) => {
   data.forEach(category => {
     // console.log(category);
     const { category_id, category_name } = category;
-    console.log(category_name);
+    // console.log(category_name);
 
     const categoryContainer = document.getElementById('category-container')
     const li = document.createElement('li');
@@ -47,53 +47,71 @@ const displayCard = async (cards) => {
   // console.log(cards);
   const cardContainer = document.getElementById('card-container');
   cardContainer.textContent = '';
+
+
+  // No Found 
+  const noFound = document.getElementById('no-found')
+  noFound.classList.remove('hidden')
+  // item count 
+  const itemCount = document.getElementById('item-found');
+  itemCount.innerText = cards.length;
+  // spinner 
+  const spinner = document.getElementById('spinner');
+  spinner.classList.remove('hidden');
+
   cards.forEach(card => {
     // console.log(card);
     const { title, thumbnail_url, details, author, total_view, rating, category_id } = card;
     // const { image_url, thumbnail_url, title, details, author, total_view, } = card;
     const { name, published_date, img } = author;
+
+    // spinner 
+    const spinner = document.getElementById('spinner');
+    spinner.classList.add('hidden');
+
+
     const cardDiv = document.createElement('div');
     cardDiv.classList.add("card", "card-side", "bg-base-100", "shadow-xl", "mb-5");
     cardDiv.innerHTML = `
     <figure class="w-1/4"><img src="${thumbnail_url}" alt="Movie"></figure>
-                    <div class="card-body w-3/4">
-                      <h2 class="card-title">${title}</h2>
-                      <p>${details.length > 400 ? details.slice(0, 400) + " ....." : details}</p>
-                      <div class="card-actions justify-between items-center">                   
-                        <div class="flex">
-                            <div class="mr-3">
-                                <img class="w-[40px] rounded-full" src="${img ? img : "img not found"}" alt="">
-                            </div>
-                            <div >
-                                <h4 class="font-bold text-xl">${name ? name : "name not found"}</h4>
-                            <h5>${published_date ? published_date : "published date not found"}</h5>
-                            </div>
-                        </div>
+      <div class="card-body w-3/4">
+        <h2 class="card-title">${title}</h2>
+        <p>${details.length > 400 ? details.slice(0, 400) + " ....." : details}</p>
+        <div class="card-actions justify-between items-center">                   
+          <div class="flex">
+            <div class="mr-3">
+              <img class="w-[40px] rounded-full" src="${img ? img : "img not found"}" alt="">
+            </div>
+            <div >
+              <h4 class="font-bold text-xl">${name ? name : "name not found"}</h4>
+              <h5>${published_date ? published_date : "published date not found"}</h5>
+            </div>
+            </div>
                 
-                        <div class="flex" >
-                           <div>
-                            <img src="img/icons8-eye-24.png" alt="">
-                           </div>
-                                <div class="flex ml-3 items-center">
-                                    <h1><span>${total_view ? total_view : "no views"}</span> M</h1> 
-                                </div>                                                      
-                        </div>
+            <div class="flex" >
+              <div>
+                <img src="img/icons8-eye-24.png" alt="">
+              </div>
+              <div class="flex ml-3 items-center">
+                <h1><span>${total_view ? total_view : "no views"}</span> M</h1> 
+              </div>                                                      
+              </div>
 
-                         <div class="text-yellow-500">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star-half-stroke"></i>
-                         </div>
+              <div class="text-yellow-500">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
+              </div>
 
 
-                        <div>
-                            <button class="btn bg-blue-600"><i class="fa-solid fa-arrow-right"></i></button>
-                        </div>
+              <div>
+                <button class="btn bg-blue-600"><i class="fa-solid fa-arrow-right"></i></button>
+              </div>
                         
-                      </div>
-                    </div>
+            </div>
+        </div>
     
     `
     cardContainer.appendChild(cardDiv);
