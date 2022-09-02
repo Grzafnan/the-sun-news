@@ -11,17 +11,17 @@ const loadCategory = async () => {
 }
 
 const displayCategory = async (data) => {
-  console.log(data);
+  // console.log(data);
   data.forEach(category => {
     // console.log(category);
-    const { id, category_name } = category;
-    // console.log(category_name);
+    const { category_id, category_name } = category;
+    console.log(category_name);
 
     const categoryContainer = document.getElementById('category-container')
     const li = document.createElement('li');
     li.classList.add("font-semibold", "text-md", "lg:text-xl")
     li.innerHTML = `
-    <a>${category_name}</a>
+    <a onclick="loadCard(${category_id})" >${category_name}</a>
     `
     categoryContainer.appendChild(li);
 
@@ -31,8 +31,8 @@ const displayCategory = async (data) => {
 
 
 
-const loadCard = async () => {
-  const url = `https://openapi.programming-hero.com/api/news/category/01`;
+const loadCard = async (id) => {
+  const url = `https://openapi.programming-hero.com/api/news/category/0${id}`;
   try {
     const res = await fetch(url);
     const data = await res.json();
@@ -45,12 +45,13 @@ const loadCard = async () => {
 
 const displayCard = async (cards) => {
   // console.log(cards);
+  const cardContainer = document.getElementById('card-container');
+  cardContainer.textContent = '';
   cards.forEach(card => {
     // console.log(card);
     const { title, thumbnail_url, details, author, total_view, rating, category_id } = card;
     // const { image_url, thumbnail_url, title, details, author, total_view, } = card;
     const { name, published_date, img } = author;
-    const cardContainer = document.getElementById('card-container');
     const cardDiv = document.createElement('div');
     cardDiv.classList.add("card", "card-side", "bg-base-100", "shadow-xl", "mb-5");
     cardDiv.innerHTML = `
@@ -102,6 +103,10 @@ const displayCard = async (cards) => {
 
 }
 
-loadCard();
-// loadCategory();
+// loadCard();
+
+
+
+
+loadCategory();
 
