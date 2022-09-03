@@ -72,7 +72,6 @@ const displayCard = async (cards) => {
   cards.forEach(card => {
     // console.log(card);
     const { _id, title, thumbnail_url, details, author, total_view, rating, category_id } = card;
-    // const { image_url, thumbnail_url, title, details, author, total_view, } = card;
     const { name, published_date, img } = author;
 
     // spinner 
