@@ -108,7 +108,7 @@ const displayCard = async (cards) => {
                 <i class="fa-solid fa-star-half-stroke"></i>
               </div>
               <div>
-              <label for="my-modal-4" class="btn btn-primary modal-button" onclick="showModal('${_id}')"><i class="fa-solid fa-arrow-right"></i></label>
+              <label for="my-modal-4" class="btn bg-purple-600 modal-button" onclick="showModal('${_id}')"><i class="fa-solid fa-arrow-right"></i></label>
               </div>
                         
             </div>
