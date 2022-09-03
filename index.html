@@ -75,7 +75,7 @@
     <section class="container mx-auto">
       <ul
         id="category-container"
-        class="menu menu-horizontal bg-base-100 rounded-box flex justify-center"
+        class="menu menu-horizontal bg-base-100 rounded-box grid grid-cols-3 lg:grid-cols-8 justify-center"
       ></ul>
     </section>
     <!-- category end  -->
@@ -94,8 +94,10 @@
     <!-- founded msg  -->
 
     <!-- Sort view Start  -->
-    <section class="container flex justify-between items-center mx-auto my-10">
-      <div class="flex items-center">
+    <section
+      class="container lg:flex justify-between items-center mx-auto my-10"
+    >
+      <div class="flex items-center mb-3">
         <div>
           <h2 class="mr-4 text-xl font-semibold">Sort By View:</h2>
         </div>
@@ -129,11 +131,13 @@
       <progress class="progress w-full"></progress>
     </div>
     <!-- spinner  end-->
-    <section id="card-container" class="container mx-auto mt-5 mb-20"></section>
+    <section
+      id="card-container"
+      class="container mx-auto mt-5 mb-20 grid"
+    ></section>
     <!-- News section end -->
 
     <!-- Modal  -->
-
     <input type="checkbox" id="my-modal-4" class="modal-toggle" />
     <div class="modal">
       <div class="modal-box relative">

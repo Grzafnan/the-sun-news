@@ -81,10 +81,10 @@ const displayCard = async (cards) => {
 
 
     const cardDiv = document.createElement('div');
-    cardDiv.classList.add("card", "card-side", "bg-base-100", "shadow-xl", "mb-5");
+    cardDiv.classList.add("card", "lg:card-side", "bg-base-100", "shadow-xl", "mb-5", "mx-auto", "w-11/12");
     cardDiv.innerHTML = `
-    <figure class="w-1/4"><img src="${thumbnail_url}" alt="Movie"></figure>
-      <div class="card-body w-3/4">
+    <figure class="w-full lg:w-1/4"><img src="${thumbnail_url}" alt="Movie"></figure>
+      <div class="card-body lg:w-3/4">
         <h2 class="card-title">${title}</h2>
         <p>${details.length > 400 ? details.slice(0, 400) + " ....." : details}</p>
         <div class="card-actions justify-between items-center">                   
@@ -132,18 +132,15 @@ const showModal = async (id) => {
   const url = `https://openapi.programming-hero.com/api/news/${id}`
   const res = await fetch(url);
   const data = await res.json();
-  console.log(data.data[0]);
-
-  const { name, img, published_date, total_view } = data.data[0].author;
-
+  // console.log(data.data);
+  const { name, img, published_date } = data.data[0].author;
   const modalBody = document.getElementById('modal-body');
   modalBody.textContent = "";
   modalBody.innerHTML = `
   <h4 class="mb-3 text-lg font-semibold">Author Name : ${name ? name : "name not found"}</h4>
   <p class="mb-3 font-semibold">published date : ${published_date ? published_date : 'published date not found'}</p>
-  <p class="mb-3 font-semibold">Views : ${total_view?.total_view || 'No views'}</p>
-  <img src="${img ? img : 'image not found'}"/>
-  `
+  <img src="${img ? img : 'image not found'}" />
+`
 }
 
 //Card Load By default
