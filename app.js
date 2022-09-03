@@ -30,8 +30,11 @@ const displayCategory = async (data) => {
 }
 
 
-
 const loadCard = async (id) => {
+
+  const spinner = document.getElementById('spinner');
+  spinner.classList.remove('hidden');
+
   const url = `https://openapi.programming-hero.com/api/news/category/0${id}`;
   try {
     const res = await fetch(url);
@@ -48,7 +51,6 @@ const displayCard = async (cards) => {
   const cardContainer = document.getElementById('card-container');
   cardContainer.textContent = '';
 
-
   // No Found 
   const noFound = document.getElementById('no-found')
   noFound.classList.remove('hidden')
@@ -57,7 +59,11 @@ const displayCard = async (cards) => {
   itemCount.innerText = cards.length;
   // spinner 
   const spinner = document.getElementById('spinner');
-  spinner.classList.remove('hidden');
+
+  if (cards.length === 0) {
+    spinner.classList.add('hidden');
+  }
+
 
 
   const sortViews = cards.sort((a, b) => {
@@ -78,8 +84,6 @@ const displayCard = async (cards) => {
     // spinner 
     const spinner = document.getElementById('spinner');
     spinner.classList.add('hidden');
-
-    // <figure class="w-full lg:w-1/4"><img src="${thumbnail_url}" alt="Movie"></figure>
 
     const cardDiv = document.createElement('div');
     cardDiv.classList.add("card", "lg:card-side", "bg-base-100", "shadow-xl", "mb-5", "mx-auto", "w-11/12");
@@ -124,7 +128,6 @@ const displayCard = async (cards) => {
     
     `
     cardContainer.appendChild(cardDiv);
-
 
   });
 
