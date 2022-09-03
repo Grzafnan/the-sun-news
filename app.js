@@ -74,16 +74,19 @@ const displayCard = async (cards) => {
     const { _id, title, thumbnail_url, details, author, total_view, rating, category_id } = card;
     const { name, published_date, img } = author;
 
+
     // spinner 
     const spinner = document.getElementById('spinner');
     spinner.classList.add('hidden');
 
+    // <figure class="w-full lg:w-1/4"><img src="${thumbnail_url}" alt="Movie"></figure>
 
     const cardDiv = document.createElement('div');
     cardDiv.classList.add("card", "lg:card-side", "bg-base-100", "shadow-xl", "mb-5", "mx-auto", "w-11/12");
     cardDiv.innerHTML = `
-    <figure class="w-full lg:w-1/4"><img src="${thumbnail_url}" alt="Movie"></figure>
-      <div class="card-body lg:w-3/4">
+    
+    <img src="${thumbnail_url}" alt="Movie">
+    <div class="card-body lg:w-3/4">
         <h2 class="card-title">${title}</h2>
         <p>${details.length > 400 ? details.slice(0, 400) + " ....." : details}</p>
         <div class="card-actions justify-between items-center">                   
