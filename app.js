@@ -15,7 +15,7 @@ const displayCategory = async (data) => {
     const { category_id, category_name } = category;
     const categoryContainer = document.getElementById('category-container')
     const li = document.createElement('li');
-    li.classList.add("font-semibold", "text-md", "lg:text-xl")
+    li.classList.add("font-semibold", "text-md", "lg:text-xl", "mx-auto")
     li.innerHTML = `
     <a onclick="loadCard(${category_id})" >${category_name}</a>
     `
