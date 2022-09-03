@@ -11,12 +11,8 @@ const loadCategory = async () => {
 }
 
 const displayCategory = async (data) => {
-  // console.log(data);
   data.forEach(category => {
-    // console.log(category);
     const { category_id, category_name } = category;
-    // console.log(category_name);
-
     const categoryContainer = document.getElementById('category-container')
     const li = document.createElement('li');
     li.classList.add("font-semibold", "text-md", "lg:text-xl")
@@ -29,9 +25,7 @@ const displayCategory = async (data) => {
 
 }
 
-
 const loadCard = async (id) => {
-
   const spinner = document.getElementById('spinner');
   spinner.classList.remove('hidden');
 
@@ -47,7 +41,6 @@ const loadCard = async (id) => {
 }
 
 const displayCard = async (cards) => {
-  // console.log(cards);
   const cardContainer = document.getElementById('card-container');
   cardContainer.textContent = '';
 
@@ -59,12 +52,9 @@ const displayCard = async (cards) => {
   itemCount.innerText = cards.length;
   // spinner 
   const spinner = document.getElementById('spinner');
-
   if (cards.length === 0) {
     spinner.classList.add('hidden');
   }
-
-
 
   const sortViews = cards.sort((a, b) => {
     if (a.total_view < b.total_view) {
@@ -76,10 +66,8 @@ const displayCard = async (cards) => {
 
 
   cards.forEach(card => {
-    // console.log(card);
     const { _id, title, thumbnail_url, details, author, total_view, rating, category_id } = card;
     const { name, published_date, img } = author;
-
 
     // spinner 
     const spinner = document.getElementById('spinner');
@@ -125,19 +113,15 @@ const displayCard = async (cards) => {
                         
             </div>
         </div>
-    
     `
     cardContainer.appendChild(cardDiv);
-
   });
-
 }
 
 const showModal = async (id) => {
   const url = `https://openapi.programming-hero.com/api/news/${id}`
   const res = await fetch(url);
   const data = await res.json();
-  console.log(data.data[0]);
   const { image_url, details, title } = data.data[0];
   console.log(title);
   const modalBody = document.getElementById('modal-body');
