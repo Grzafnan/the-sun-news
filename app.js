@@ -59,9 +59,19 @@ const displayCard = async (cards) => {
   const spinner = document.getElementById('spinner');
   spinner.classList.remove('hidden');
 
+
+  const sortViews = cards.sort((a, b) => {
+    if (a.total_view < b.total_view) {
+      return 1;
+    } else {
+      return -1;
+    }
+  });
+
+
   cards.forEach(card => {
     // console.log(card);
-    const { title, thumbnail_url, details, author, total_view, rating, category_id } = card;
+    const { _id, title, thumbnail_url, details, author, total_view, rating, category_id } = card;
     // const { image_url, thumbnail_url, title, details, author, total_view, } = card;
     const { name, published_date, img } = author;
 
@@ -96,7 +106,6 @@ const displayCard = async (cards) => {
                 <h1><span>${total_view ? total_view : "no views"}</span> M</h1> 
               </div>                                                      
               </div>
-
               <div class="text-yellow-500">
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
@@ -104,10 +113,8 @@ const displayCard = async (cards) => {
                 <i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star-half-stroke"></i>
               </div>
-
-
               <div>
-                <button class="btn bg-blue-600"><i class="fa-solid fa-arrow-right"></i></button>
+              <label for="my-modal-4" class="btn btn-primary modal-button" onclick="showModal('${_id}')"><i class="fa-solid fa-arrow-right"></i></label>
               </div>
                         
             </div>
@@ -121,10 +128,26 @@ const displayCard = async (cards) => {
 
 }
 
-// loadCard();
+const showModal = async (id) => {
+  const url = `https://openapi.programming-hero.com/api/news/${id}`
+  const res = await fetch(url);
+  const data = await res.json();
+  console.log(data.data[0]);
 
+  const { name, img, published_date, total_view } = data.data[0].author;
 
+  const modalBody = document.getElementById('modal-body');
+  modalBody.textContent = "";
+  modalBody.innerHTML = `
+  <h4 class="mb-3 text-lg font-semibold">Author Name : ${name ? name : "name not found"}</h4>
+  <p class="mb-3 font-semibold">published date : ${published_date ? published_date : 'published date not found'}</p>
+  <p class="mb-3 font-semibold">Views : ${total_view?.total_view || 'No views'}</p>
+  <img src="${img ? img : 'image not found'}"/>
+  `
+}
 
+//Card Load By default
+loadCard('2');
 
+//load category
 loadCategory();
-
