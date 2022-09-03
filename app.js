@@ -131,15 +131,16 @@ const showModal = async (id) => {
   const url = `https://openapi.programming-hero.com/api/news/${id}`
   const res = await fetch(url);
   const data = await res.json();
-  // console.log(data.data);
-  const { name, img, published_date } = data.data[0].author;
+  console.log(data.data[0]);
+  const { image_url, details, title } = data.data[0];
+  console.log(title);
   const modalBody = document.getElementById('modal-body');
   modalBody.textContent = "";
   modalBody.innerHTML = `
-  <h4 class="mb-3 text-lg font-semibold">Author Name : ${name ? name : "name not found"}</h4>
-  <p class="mb-3 font-semibold">published date : ${published_date ? published_date : 'published date not found'}</p>
-  <img src="${img ? img : 'image not found'}" />
-`
+  <img src="${image_url ? image_url : 'image not found'}" />
+  <h4 class="my-3 text-lg font-semibold"> ${title ? title : "Title not found"}</h4>
+  <p class="mb-3 font-xl"> ${details ? details : 'published date not found'}</p>
+`;
 }
 
 //Card Load By default
