@@ -18,7 +18,7 @@
     />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body class="px-5">
+  <body>
     <!-- header  -->
     <header class="container mx-auto my-5">
       <div class="navbar bg-base-100">
@@ -35,14 +35,14 @@
           <div class="mr-4 font-bold">
             <a
               href="#"
-              class="text-purple-600 inline-block mr-5 border-b-purple-600 border-b-4 text-xl font-bold"
+              class="text-purple-600 inline-block mr-5 border-b-purple-600 border-b-4 md:text-xl font-bold"
             >
               News</a
             >
             <a
               href="./blog.html"
               target="_blank"
-              class="text-gray-600 text-xl font-bold"
+              class="text-gray-600 md:text-xl font-bold"
             >
               Blog</a
             >
@@ -74,9 +74,9 @@
       <div class="mt-6 border-b-2 border-b-gray-300 container"></div>
     </header>
     <!-- Header end  -->
-    <main>
+    <main class="px-5">
       <!-- category start  -->
-      <section class="container mx-auto">
+      <section class="container mx-auto mb-5">
         <ul
           id="category-container"
           class="menu menu-horizontal bg-base-100 rounded-box grid grid-cols-3 lg:grid-cols-8 justify-center"
@@ -87,7 +87,7 @@
       <!-- founded msg  -->
       <div
         id="no-found"
-        class="card w-full container mx-auto bg-white text-black text-primary-content drop-shadow-md mt-5 hidden border-t-2 border-t-gray-300"
+        class="card w-full container mx-auto bg-white text-black text-primary-content drop-shadow-md hidden border-t-2 border-t-gray-300"
       >
         <div class="card-body">
           <h2 class="card-title">
@@ -101,9 +101,9 @@
       <section
         class="container md:flex md:justify-between md:items-center ml-auto md:mx-auto my-10"
       >
-        <div class="flex items-center mb-3">
+        <div class="flex justify-evenly md:justify-start items-center mb-3">
           <div>
-            <h2 class="mr-4 text-xl font-semibold">Sort By View:</h2>
+            <h2 class="mr-4 md:text-xl font-semibold">Sort By View:</h2>
           </div>
           <div>
             <select class="select select-bordered w-full max-w-xs">
@@ -115,7 +115,7 @@
           </div>
         </div>
         <div>
-          <div class="flex items-center">
+          <div class="flex justify-evenly md:justify-end">
             <div
               class="mr-5 bg-purple-600 p-2 text-white font-semibold rounded-md"
             >
